@@ -12,13 +12,15 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+const listRef = document.querySelector('.gallery');
 
-images.forEach(image => {
+const listImage = images.map(image => {
   const { url, alt } = image;
   const imgRef = document.createElement('img');
   imgRef.src = url;
   imgRef.alt = alt;
   imgRef.classList.add('gallery__images');
-  const listRef = document.querySelector('.gallery');
-  listRef.append(imgRef);
+
+  return imgRef;
 });
+listRef.append(...listImage);
