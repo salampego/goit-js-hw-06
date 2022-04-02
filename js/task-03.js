@@ -14,13 +14,10 @@ const images = [
 ];
 const listRef = document.querySelector('.gallery');
 
-const listImage = images.map(image => {
-  const { url, alt } = image;
-  const imgRef = document.createElement('img');
-  imgRef.src = url;
-  imgRef.alt = alt;
-  imgRef.classList.add('gallery__images');
-
-  return imgRef;
-});
-listRef.append(...listImage);
+const listImage = images
+  .map(image => {
+    const { url, alt } = image;
+    return `<img src="${url}" alt="${alt}" class="gallery__images"></img>`;
+  })
+  .join('');
+listRef.insertAdjacentHTML('beforeend', listImage);
